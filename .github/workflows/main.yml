@@ -2,7 +2,7 @@ name: Build Windows 7 EXE
 on: [push]
 jobs:
   build:
-    runs-on: windows-2019  # Uses Windows Server 2019 (Python 3.8 compatible)
+    runs-on: windows-2019
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -13,16 +13,15 @@ jobs:
           python-version: 3.8
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller  # Combine PyInstaller installation here
 
       - name: Build EXE
-        run: pyinstaller --onefile 18FFAMILY.py
+        run: pyinstaller --onefile app.py  # Replace "app.py" with your script name
 
       - name: Upload EXE
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4
         with:
-          name: 18FFAMILY.exe
-          path: dist/18FFAMILY.exe
+          name: app.exe
+          path: dist/app.exe
