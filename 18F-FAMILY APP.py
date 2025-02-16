@@ -13,7 +13,11 @@ window.title("18F-FAMILY APP")
 window.resizable(0, 0)
 window.config(bg='#b7950b')
 
-
+def resource_path(relative_path):
+    """Get the correct path for bundled files (works for EXE and dev mode)."""
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, os.path.basename(relative_path))
+    return os.path.join(os.path.abspath("."), relative_path)
 
 def resource_path(relative_path):
     try:
