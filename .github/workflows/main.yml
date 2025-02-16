@@ -18,7 +18,7 @@ jobs:
           pip install pyinstaller  # Combine PyInstaller installation here
 
       - name: Build EXE
-        run: pyinstaller --onefile 18F-FAMILY APP.py  # Replace "app.py" with your script name
+        run: pyinstaller --onefile "18F-FAMILY APP.py"  # Replace "app.py" with your script name
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4  # Updated to v4
