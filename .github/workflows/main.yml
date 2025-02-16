@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 18F-FAMILY APP.exe
-          path: dist/"18F-FAMILY APP".exe
+          path: dist/18F-FAMILY APP.exe
